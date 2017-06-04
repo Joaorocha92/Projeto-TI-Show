@@ -1,7 +1,6 @@
 
 package tishow;
 
-import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -19,6 +18,7 @@ public class TIshow {
     
     public static void main(String[] args) {
        
+        inicioJogo();
         
        do{ 
            zeraTudo();
@@ -34,6 +34,16 @@ public class TIshow {
         
     }
     
+    
+    static void inicioJogo(){
+        
+        System.out.printf("\n Bem vindos ao Quiz do T.I Show \n "
+                + "\n Regras: siga as instruções e não aperte nenhum número ou \n"
+                + " caracter que não apareça no jogo! \n"
+                + " se isso acontecer o jogo terminar! \n");
+    }
+    
+    // Inicio das Perguntas //
     static int pergunta(){
         int num = 1;
         System.out.println("");
@@ -65,7 +75,7 @@ public class TIshow {
         System.out.println("4 - colombo");
         
         System.out.printf("\nResposta: ");
-            resposta = leitor.nextInt();
+        resposta = leitor.nextInt();
         
         
         
@@ -84,14 +94,10 @@ public class TIshow {
             case 3:
             case 4:    
                 System.out.printf("\n*** Resposta errada *** \n");
-                
-            pontos = pontos - 30;
-            chances = chances -1;
-            
-        }
-        
-        return resposta;
-        
+                pontos = pontos - 30;
+                chances = chances -1;           
+        }        
+        return resposta;        
     }
     
     static int opcao2(int a){
@@ -106,14 +112,10 @@ public class TIshow {
                 case 3:
                 case 4:
                     System.out.printf("\n*** Resposta errada *** \n");
-
-                pontos = pontos - 30;
-                chances = chances -1;
-
-            }
-        
-        return resposta;
-        
+                    pontos = pontos - 30;
+                    chances = chances -1;
+            }        
+        return resposta;        
     }
     
     // zera a resposta para receber um novo valor//
@@ -122,6 +124,7 @@ public class TIshow {
         return resposta;        
     }
     
+    // zera todas variaveis globais para o valor inicial//
     static void zeraTudo(){
      contador = 0;
      resposta = 0;
@@ -138,32 +141,18 @@ public class TIshow {
         System.out.println("-- Suas chances: "+chances + " --");
         
     }
-
-    
-    /*static int[] vetor(int[] jaRespondeu){
-        
-        jaRespondeu = new int[20];
-        
-        return jaRespondeu;
-    }*/
-    
-    /*static int  verificacao(int a){
-        
-        if(jaRespondeu[1] == 1){
-            
-        }        
-        return a;        
-    }*/
-    
+   
     static void jogada(){
        
          
             // verifica as jogadas e quando as chances forem zero sai do loop e da game over//
             while( contador  < chances && pontos < 690 ){
-
-                int a = pergunta();
-                int b = opcao(a);
-                imprimiPontoEChances();
+                
+                int a,b;
+                
+                a = pergunta();
+                b = opcao(a);
+               imprimiPontoEChances();                       
 
                 // pega a variavel b com o valor da resposta e zera para receber o novo valor
                 // de resposta da proxima pergunta//
@@ -172,9 +161,7 @@ public class TIshow {
                 a = pergunta2();
                 b = opcao2(a);
                 imprimiPontoEChances();
-
-            }
-         
+            }       
                
     }
     
@@ -183,7 +170,8 @@ public class TIshow {
        
         if (pontos <= 0 || chances == 0){
             
-                System.out.println("Game Over!!!");
+                System.out.printf("\n*** GAME OVER!!! ***\n");
+                
         }
                 
     }
@@ -204,42 +192,47 @@ public class TIshow {
         }
     }
     
-    static int zeraVariavel (){
-        
-        int a = 0;
-        
-        return a;
-    }
     
     // Permite jogar novamente ou não//
     static int jogarNovamente(){
-        
         int jogarDeNovo = 0;
-        System.out.println("");
-        System.out.println("// Deseja jogar novamente? //");
-        System.out.println("");
-        System.out.println("Sim aperte 1");
-        System.out.println("Não aperte 2");
-        int a = leitor.nextInt();
         
-        if(a == 1){
-            jogarDeNovo = a;
-            continua = true;
-        }
-        else if(a == 2){
-            jogarDeNovo = a;
-            continua = continua;
-        }
-        else{
+            try{
+                System.out.println("");
+                System.out.println("// Deseja jogar novamente? //");
+                System.out.println("");
+                System.out.println("Sim aperte 1");
+                System.out.println("Não aperte 2");
+                int a = leitor.nextInt();
+
+                if(a == 1){
+                    jogarDeNovo = a;
+                    continua = true;
+                }
+                else if(a == 2){
+                    jogarDeNovo = a;
+                    continua = continua;
+                }else{
+                
+                    System.out.println("Número invalido");
+                }
+               
+                
+            }catch(Exception error){
+
+                     // colocar tratamento de erro//
+                    System.out.println("Número inválido!!! erro: "+error);
+                   
+            }
+           
             
-            // colocar tratamento de erro//
-            System.out.println("Número inválido!!!");
-        }
-        
         return jogarDeNovo;
-        
     }
-    
-    
-    
+        
+        
+        
 }
+    
+    
+    
+
