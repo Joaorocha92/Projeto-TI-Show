@@ -46,7 +46,7 @@ public class TIshow {
         System.out.println("3 - 10,14");
         System.out.println("4 - 13,04");
         
-        System.out.print("Resposta: ");
+        System.out.printf("\nResposta: ");
         resposta = leitor.nextInt();
         
         return resposta;
@@ -64,8 +64,10 @@ public class TIshow {
         System.out.println("3 - julio cesar");
         System.out.println("4 - colombo");
         
-        System.out.print("Resposta: ");
+        System.out.printf("\nResposta: ");
         resposta = leitor.nextInt();
+        
+        
         
         return resposta;
     }
@@ -75,16 +77,17 @@ public class TIshow {
         switch (resposta){
             
             case 1:
-                System.out.println("Resposta correta!");
+                System.out.printf("\n*** Resposta correta! *** \n");
                 pontos = pontos + 30; 
                 break;
             case 2:
             case 3:
             case 4:    
-                System.out.println("Resposta errada");
-                
-            pontos = pontos - 30;
-            chances = chances -1;
+                System.out.printf("\n*** Resposta errada *** \n");
+            default:
+                    pontos = pontos - 30;
+                    chances = chances -1;
+                    System.out.println("Número ou caracter invalido!");
             
         }
         
@@ -94,23 +97,23 @@ public class TIshow {
     
     static int opcao2(int a){
           
-        switch (resposta){
-            
-            case 2:
-                System.out.println("");
-                System.out.println("Resposta correta!");
-                pontos = pontos + 30; 
-                break;
-            case 1:
-            case 3:
-            case 4:
-                System.out.println("");
-                System.out.println("Resposta errada");
+            switch (resposta){
+
+                case 2:
+                    System.out.printf("\n*** Resposta correta! *** \n");
+                    pontos = pontos + 30; 
+                    break;
+                case 1:
+                case 3:
+                case 4:
+                    System.out.printf("\n*** Resposta errada *** \n");
+                default: 
+                    pontos = pontos - 30;
+                    chances = chances -1;
+                    System.out.println("Número ou caracter invalido!");     
                 
-            pontos = pontos - 30;
-            chances = chances -1;
-            
-        }
+                
+            }
         
         return resposta;
         
@@ -127,14 +130,15 @@ public class TIshow {
      resposta = 0;
      pontos = 630;
      chances = chances;
+     continua = false; 
     }
     
     //imprime os pontos e as chances restantes//
     static void imprimiPontoEChances(){
         
-        System.out.println("Seus pontos: "+pontos);
+        System.out.printf("\n-- Seus pontos: "+pontos + " --");
         System.out.println("");
-        System.out.println("Suas chances: "+chances);
+        System.out.println("-- Suas chances: "+chances + " --");
         
     }
 
@@ -198,10 +202,8 @@ public class TIshow {
         
         if (pontos == 690){
             System.out.println("");
-            System.out.println("Parabens você acertou todas as questões");
+            System.out.println("**** Parabens você acertou todas as questões ****");
             System.out.println("");
-            System.out.println("Seus pontos: "+pontos);
-            System.out.println("Suas chances restantes: "+chances);
         }
     }
     
