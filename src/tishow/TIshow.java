@@ -65,7 +65,7 @@ public class TIshow {
         System.out.println("4 - colombo");
         
         System.out.printf("\nResposta: ");
-        resposta = leitor.nextInt();
+            resposta = leitor.nextInt();
         
         
         
@@ -84,10 +84,9 @@ public class TIshow {
             case 3:
             case 4:    
                 System.out.printf("\n*** Resposta errada *** \n");
-            default:
-                    pontos = pontos - 30;
-                    chances = chances -1;
-                    System.out.println("Número ou caracter invalido!");
+                
+            pontos = pontos - 30;
+            chances = chances -1;
             
         }
         
@@ -107,12 +106,10 @@ public class TIshow {
                 case 3:
                 case 4:
                     System.out.printf("\n*** Resposta errada *** \n");
-                default: 
-                    pontos = pontos - 30;
-                    chances = chances -1;
-                    System.out.println("Número ou caracter invalido!");     
-                
-                
+
+                pontos = pontos - 30;
+                chances = chances -1;
+
             }
         
         return resposta;
