@@ -11,7 +11,7 @@ public class TIshow {
     static boolean continua = false;
     static int contador = 0;
     static int resposta = 0;
-    static int pontos = 630;
+    static int pontos = 90;
     static int chances = 2;
     static Scanner leitor = new Scanner(System.in);
     //static int [] jaRespondeu;
@@ -26,6 +26,7 @@ public class TIshow {
            zeraResposta();
            gameover();
            ganhou();
+           
            jogarNovamente();
        }
        while(continua);
@@ -128,7 +129,7 @@ public class TIshow {
     static void zeraTudo(){
      contador = 0;
      resposta = 0;
-     pontos = 630;
+     pontos = 90;
      chances = chances;
      continua = false; 
     }
@@ -146,7 +147,7 @@ public class TIshow {
        
          
             // verifica as jogadas e quando as chances forem zero sai do loop e da game over//
-            while( contador  < chances && pontos < 690 ){
+            while( contador  < chances && pontos < 120 ){
                 
                 int a,b;
                 
@@ -171,7 +172,7 @@ public class TIshow {
         if (pontos <= 0 || chances == 0){
             
                 System.out.printf("\n*** GAME OVER!!! ***\n");
-                
+                chances = 2;          
         }
                 
     }
@@ -185,7 +186,7 @@ public class TIshow {
     // verifica se o jogador ganhou!!!//
     static void ganhou(){
         
-        if (pontos == 690){
+        if (pontos == 150){
             System.out.println("");
             System.out.println("**** Parabens você acertou todas as questões ****");
             System.out.println("");
@@ -196,8 +197,10 @@ public class TIshow {
     // Permite jogar novamente ou não//
     static int jogarNovamente(){
         int jogarDeNovo = 0;
-        
-            try{
+            
+           int novamente = 1; 
+           while(novamente < 10){
+               try{
                 System.out.println("");
                 System.out.println("// Deseja jogar novamente? //");
                 System.out.println("");
@@ -217,14 +220,16 @@ public class TIshow {
                     System.out.println("Número invalido");
                 }
                
+                novamente = 11;
+                 a = 0;
                 
-            }catch(Exception error){
+                }catch(Exception error){
 
-                     // colocar tratamento de erro//
-                    System.out.println("Número inválido!!! erro: "+error);
-                   
-            }
-           
+                         // colocar tratamento de erro//
+                        System.out.println("Número inválido!!! erro: "+error);
+
+                }
+           }
             
         return jogarDeNovo;
     }
