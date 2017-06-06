@@ -1,4 +1,3 @@
-
 package tishow;
 
 import java.util.Scanner;
@@ -12,7 +11,7 @@ public class TIshow {
     static int contador = 0;
     static int resposta = 0;
     static int pontos = 90;
-    static int chances = 2;
+    static int chances = 3;
     static Scanner leitor = new Scanner(System.in);
     //static int [] jaRespondeu;
     
@@ -46,16 +45,16 @@ public class TIshow {
     
     // Inicio das Perguntas //
     static int pergunta(){
-        int num = 1;
+        
         System.out.println("");
         System.out.println("Pergunta 1");
         System.out.println("");
-        System.out.println("Qual o valor de PI");
+        System.out.println("Como criar um repositório no git?");
         System.out.println("");
-        System.out.println("1 - 3,14");
-        System.out.println("2 - 5,55");
-        System.out.println("3 - 10,14");
-        System.out.println("4 - 13,04");
+        System.out.println("1 - git status");
+        System.out.println("2 - git push");
+        System.out.println("3 - git add");
+        System.out.println("4 - git init");
         
         System.out.printf("\nResposta: ");
         resposta = leitor.nextInt();
@@ -64,21 +63,55 @@ public class TIshow {
     }
     
     static int pergunta2(){
-        int num = 2;       
+               
         System.out.println("");
         System.out.println("Pergunta 2");
         System.out.println("");
-        System.out.println("Quem descobriu o brasil");
+        System.out.println("Como verificar o estado atual do repositório no git?");
         System.out.println("");
-        System.out.println("1 - borba gato");
-        System.out.println("2 - pedro alvares");
-        System.out.println("3 - julio cesar");
-        System.out.println("4 - colombo");
+        System.out.println("1 - git remote");
+        System.out.println("2 - git clone");
+        System.out.println("3 - git status");
+        System.out.println("4 - git pull");
         
         System.out.printf("\nResposta: ");
         resposta = leitor.nextInt();
         
+        return resposta;
+    }
+    
+    static int pergunta3(){
+            
+        System.out.println("");
+        System.out.println("Pergunta 3");
+        System.out.println("");
+        System.out.println("O que é uma variável ?");
+        System.out.println("");
+        System.out.println("1 - um espaço alocado na memória");
+        System.out.println("2 - um tipo de comando do git ");
+        System.out.println("3 - sequência de passos lógicos");
+        System.out.println("4 - aquilo que varia ");
         
+        System.out.printf("\nResposta: ");
+        resposta = leitor.nextInt();
+        
+        return resposta;
+    }
+    
+    static int pergunta4(){
+            
+        System.out.println("");
+        System.out.println("Pergunta 4");
+        System.out.println("");
+        System.out.println("Uma validação de uma entrada é que tipo de dado?");
+        System.out.println("");
+        System.out.println("1 - Lógico");
+        System.out.println("2 - Inteiro");
+        System.out.println("3 - String");
+        System.out.println("4 - Real");
+        
+        System.out.printf("\nResposta: ");
+        resposta = leitor.nextInt();
         
         return resposta;
     }
@@ -87,16 +120,17 @@ public class TIshow {
           
         switch (resposta){
             
-            case 1:
+            case 1:                
+            case 2:
+            case 3:
+                System.out.printf("\n*** Resposta errada *** \n");
+                pontos = pontos - 30;
+                chances = chances -1;
+                         
+            case 4:                 
                 System.out.printf("\n*** Resposta correta! *** \n");
                 pontos = pontos + 30; 
                 break;
-            case 2:
-            case 3:
-            case 4:    
-                System.out.printf("\n*** Resposta errada *** \n");
-                pontos = pontos - 30;
-                chances = chances -1;           
         }        
         return resposta;        
     }
@@ -104,13 +138,48 @@ public class TIshow {
     static int opcao2(int a){
           
             switch (resposta){
-
-                case 2:
+                case 3:
                     System.out.printf("\n*** Resposta correta! *** \n");
                     pontos = pontos + 30; 
                     break;
                 case 1:
-                case 3:
+                case 2:
+                case 4:
+                    System.out.printf("\n*** Resposta errada *** \n");
+                    pontos = pontos - 30;
+                    chances = chances -1;
+            }        
+        return resposta;        
+    }
+    
+    static int opcao3(int a){
+          
+            switch (resposta){
+                case 1:
+                    System.out.printf("\n*** Resposta correta! *** \n");
+                    pontos = pontos + 30; 
+                    break;
+                
+                case 2:
+                case 3:    
+                case 4:
+                    System.out.printf("\n*** Resposta errada *** \n");
+                    pontos = pontos - 30;
+                    chances = chances -1;
+            }        
+        return resposta;        
+    }
+    
+    static int opcao4(int a){
+          
+            switch (resposta){
+                case 1:
+                    System.out.printf("\n*** Resposta correta! *** \n");
+                    pontos = pontos + 30; 
+                    break;
+                
+                case 2:
+                case 3:    
                 case 4:
                     System.out.printf("\n*** Resposta errada *** \n");
                     pontos = pontos - 30;
@@ -145,34 +214,73 @@ public class TIshow {
    
     static void jogada(){
        
-         
+         int a = 0;
+         int b = 0;
+         int ultimaQuestao = 0;
+         int saiLoop = 0;
             // verifica as jogadas e quando as chances forem zero sai do loop e da game over//
-            while( contador  < chances && pontos < 120 ){
-                
-                int a,b;
-                
-                a = pergunta();
-                b = opcao(a);
-               imprimiPontoEChances();                       
+            do{           
+                                    
+                                  
+                  if(chances > 0 && pontos < 900){
+                      
+                    a = pergunta();                  
+                    b = opcao(a);
+                   imprimiPontoEChances(); 
+                   }
+                   
+                  ultimaQuestao =ultimaQuestao + 1;
+                    
+                  if(chances > 0 && ultimaQuestao == 1 && pontos < 900){
+                    b = zeraResposta();                
 
+                    a = pergunta2();
+                    b = opcao2(a);
+                    imprimiPontoEChances();
+                  }
+                  
+                   ultimaQuestao = ultimaQuestao + 1;
+                  
+                  if(chances > 0 && ultimaQuestao == 2 && pontos < 900){
+                    b = zeraResposta();                
+
+                    a = pergunta3();
+                    b = opcao3(a);
+                    imprimiPontoEChances();
+                  }
+                  
+                  ultimaQuestao = ultimaQuestao + 1;
+                  
+                  if(chances > 0 && ultimaQuestao == 3 && pontos < 900){
+                    b = zeraResposta();                
+
+                    a = pergunta4();
+                    b = opcao4(a);
+                    imprimiPontoEChances();
+                  }
+                  
+                  else{
+                    break;
+                  }  
+                  
+                  if(pontos == 900){
+                      saiLoop = 1;
+                  }
+                
                 // pega a variavel b com o valor da resposta e zera para receber o novo valor
                 // de resposta da proxima pergunta//
-                b = zeraResposta();
-
-                a = pergunta2();
-                b = opcao2(a);
-                imprimiPontoEChances();
-            }       
+                
+            }while(saiLoop == 0);       
                
     }
     
     // verifica se o jogador perdeu!!!//
     static void gameover(){
        
-        if (pontos <= 0 || chances == 0){
+        if (chances == 0){
             
                 System.out.printf("\n*** GAME OVER!!! ***\n");
-                chances = 2;          
+                chances = 3;          
         }
                 
     }
@@ -198,8 +306,7 @@ public class TIshow {
     static int jogarNovamente(){
         int jogarDeNovo = 0;
             
-           int novamente = 1; 
-           while(novamente < 10){
+           
                try{
                 System.out.println("");
                 System.out.println("// Deseja jogar novamente? //");
@@ -220,7 +327,7 @@ public class TIshow {
                     System.out.println("Número invalido");
                 }
                
-                novamente = 11;
+                
                  a = 0;
                 
                 }catch(Exception error){
@@ -229,7 +336,7 @@ public class TIshow {
                         System.out.println("Número inválido!!! erro: "+error);
 
                 }
-           }
+           
             
         return jogarDeNovo;
     }
@@ -240,4 +347,3 @@ public class TIshow {
     
     
     
-
